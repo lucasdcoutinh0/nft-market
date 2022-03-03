@@ -1,35 +1,42 @@
 /* pages/_app.js */
 import '../styles/globals.css'
+import { useState } from 'react'
 import Link from 'next/link'
+import * as FaIcons from "react-icons/fa"
+import * as AiIcons from "react-icons/ai"
+import { SidebarData } from "../components/SidebarData"
+import '../components/Sidebar.css'
+import '../styles/App.css'
+import { IconContext } from 'react-icons';
 
 function MyApp({ Component, pageProps }) {
+  const [sidebar, setSidebar] = useState(false)
+  const showSidebar = () => setSidebar(!sidebar)
   return (
     <div>
-      <nav className="border-b p-6">
-        <p className="text-4xl font-bold">Metaverse Marketplace</p>
-        <div className="flex mt-4">
-          <Link href="/">
-            <a className="mr-4 text-pink-500">
-              Home
-            </a>
-          </Link>
-          <Link href="/create-nft">
-            <a className="mr-6 text-pink-500">
-              Sell NFT
-            </a>
-          </Link>
-          <Link href="/my-nfts">
-            <a className="mr-6 text-pink-500">
-              My NFTs
-            </a>
-          </Link>
-          <Link href="/dashboard">
-            <a className="mr-6 text-pink-500">
-              Dashboard
-            </a>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <Link href='/' className='menu-bars'>
+            <FaIcons.FaBars onClick={showSidebar} />
           </Link>
         </div>
-      </nav>
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className='navbar-toggle'>
+              <Link href='/' className='menu-bars'>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link href={item.path}><a>{item.icon}{item.title}</a></Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
       <Component {...pageProps} />
     </div>
   )
