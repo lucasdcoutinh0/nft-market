@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className='navbar'>
           <Link href='/' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
+            <FaIcons.FaBars onClick={showSidebar} style={{ color: '#fff' }}/>
           </Link>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
