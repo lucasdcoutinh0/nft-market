@@ -1,9 +1,11 @@
 .navbar {
+    padding-left: 20px;
     background-color: #060b26;
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
+    color: #f5f5f5;
   }
   
   .menu-bars {

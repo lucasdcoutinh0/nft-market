@@ -19,12 +19,15 @@ function MyApp({ Component, pageProps }) {
           <Link href='/' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} style={{ color: '#fff' }}/>
           </Link>
+          <div className='page-title'>
+          <h1 className="px-5">Coutinho's NFT's Marketplace</h1>
+          </div>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
               <Link href='/' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
+                <AiIcons.AiOutlineClose style={{ color: '#fff' }} />
               </Link>
             </li>
             {SidebarData.map((item, index) => {
